@@ -1,0 +1,5 @@
+# 低版本tshark 抓 MYSQL
+tshark -i eth0 port 3306  -T fields -e frame.number -e frame.time_delta -e tcp.srcport -e tcp.dstport -e col.Info -e mysql.query
+
+# 高版本tshark 
+tshark -i lo -Y "tcp.port==3306" -T fields -e frame.number -e frame.time -e frame.time_delta -e tcp.srcport -e tcp.dstport -e tcp.len -e _ws.col.Info -e mysql.query
